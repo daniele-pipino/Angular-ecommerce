@@ -1,0 +1,184 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create new Products</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- creation form -->
+        <form [formGroup]="newProductsForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              formControlName="name"
+            />
+          </div>
+          <div class="mb-3">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Leave a comment here"
+                id="description"
+                formControlName="description"
+              ></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="cover" class="form-label">Cover</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              id="cover"
+              formControlName="cover"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              aria-describedby="emailHelp"
+              id="price"
+              formControlName="price"
+            />
+          </div>
+          <div class="mb-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="category"
+            >
+              <option selected>-</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category.name }}"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <hr />
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="checkNewProduct()"
+          >
+            Crea prodotto
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- !Modify form -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="modifyProductsForm" id="products-form">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              formControlName="name"
+            />
+          </div>
+          <div class="mb-3">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Leave a comment here"
+                id="description"
+                formControlName="description"
+              ></textarea>
+              <label for="description">Description</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="cover" class="form-label">Cover</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              id="cover"
+              formControlName="cover"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              aria-describedby="emailHelp"
+              id="price"
+              formControlName="price"
+            />
+          </div>
+          <div class="mb-3">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="category"
+            >
+              <option selected>-</option>
+              <option
+                *ngFor="let category of categories"
+                value="{{ category.name }}"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <hr />
+          <button
+            type="button"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            class="btn btn-primary"
+            (click)="checkModifiedProduct()"
+          >
+            Modifica prodotto
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

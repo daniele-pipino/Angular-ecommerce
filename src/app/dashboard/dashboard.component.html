@@ -1,0 +1,186 @@
+<!-- jumbo -->
+<section class="py-2 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Benvenuto admin</h1>
+      <p class="lead text-muted">
+        Something short and leading about the collection below—its contents, the
+        creator, etc. Make it short and sweet, but not too short so folks don’t
+        simply skip over it entirely.
+      </p>
+      <p>
+        <a class="btn btn-primary mx-1" (click)="seeProducts()"
+          >See all products...</a
+        >
+        <a class="btn btn-primary mx-1" (click)="seeCategories()"
+          >See all categories...</a
+        >
+        <a class="btn btn-primary mx-1" (click)="seeUsers()"
+          >See all users...</a
+        >
+      </p>
+    </div>
+  </div>
+</section>
+<!-- products -->
+<section id="products" *ngIf="isProductVisible">
+  <div class="album py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <h2>Products</h2>
+        <div>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div *ngFor="let product of products" class="col">
+          <div class="card shadow-sm">
+            <img src="{{ product.cover }}" alt="" class="img-fluid" />
+
+            <div class="card-body">
+              <h3>{{ product.name }}</h3>
+              <hr />
+              <p class="card-text">
+                {{ product.description }}
+              </p>
+              <hr />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    (click)="getProductValue(product)"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="askDeleting(product._id)"
+                  >
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <small class="btn btn-success">${{ product.price }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- categories -->
+<section id="categories" *ngIf="isCategoryVisible">
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <h2>Categories</h2>
+      <div>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal1"
+        >
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories" class="text-muted">
+          <td scope="row">{{ category._id }}</td>
+          <td class="fs-5">{{ category.name }}</td>
+          <td>
+            <button
+              class="btn btn-warning mx-1"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal2"
+              (click)="getCategoryValue(category)"
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button
+              class="btn btn-danger mx-1"
+              (click)="askDeleting(category._id)"
+            >
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- todo             USERS -->
+<section id="users" *ngIf="isUserVisible">
+  <div class="container">
+    <div>
+      <h2>Users</h2>
+    </div>
+    <hr />
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">FiscalCode</th>
+          <th scope="col">Email</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Common</th>
+          <th scope="col">Cap</th>
+          <th scope="col">Address</th>
+          <th scope="col">CivicNumber</th>
+          <th scope="col">Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" class="text-muted">
+          <td>{{ user.name }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.fiscalCode }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.nationality }}</td>
+          <td>{{ user.common }}</td>
+          <td>{{ user.cap }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.civicNumber }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button class="btn btn-danger mx-1" (click)="askDeleting(user._id)">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- modals -->
+<app-product-modal [productvalue]="productValues"></app-product-modal>
+<app-category-modal
+  *ngIf="isCategoryVisible"
+  [categoryValue]="categoryValues"
+></app-category-modal>

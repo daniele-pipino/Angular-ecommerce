@@ -1,0 +1,84 @@
+<!-- creation modal -->
+<div
+  class="modal fade"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create new category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- creation form -->
+        <form action="" [formGroup]="newCategoryForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input
+              [ngClass]="{ 'is-invalid': error }"
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              formControlName="name"
+            />
+            <small *ngIf="error" class="text-danger">Nome non valido</small>
+          </div>
+          <hr />
+          <button type="button" class="btn btn-primary" (click)="check()">
+            Create category
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modification modal -->
+
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifica category</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- creation form -->
+        <form action="" [formGroup]="modifyCategoryForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="emailHelp"
+              formControlName="name"
+            />
+          </div>
+          <hr />
+          <button type="button" class="btn btn-primary" (click)="check()">
+            Modify category
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

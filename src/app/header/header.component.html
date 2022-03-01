@@ -1,0 +1,66 @@
+<nav
+  *ngIf="isLogged == false"
+  class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-2"
+>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/products"
+            >Products</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="btn btn-success" routerLink="/login">Accedi</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav
+  *ngIf="isLogged == true && role == 'admin'"
+  class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-2"
+>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/dashboard"
+            ><i class="fa-solid fa-user-gear ml-2"></i>Dashboard</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="btn btn-secondary" (click)="logout()">
+          Logout <i class="fa-solid fa-user-large-slash"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav
+  *ngIf="isLogged == true && role == 'user'"
+  class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-2"
+>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Home</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/dashboard"
+            >Products</a
+          >
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="btn btn-secondary" (click)="logout()">
+          Logout <i class="fa-solid fa-user-large-slash"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,16 @@
+<div class="container my-3">
+  <div class="row">
+    <!-- text -->
+    <div class="col-12">
+      <h2>Categories</h2>
+      <hr />
+    </div>
+    <!-- card -->
+    <app-category-card
+      class="col-3 my-2"
+      *ngFor="let category of categories"
+      [category]="category"
+      (click)="launchFilter(category.id)"
+    ></app-category-card>
+  </div>
+</div>
